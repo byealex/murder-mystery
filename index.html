@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mysterious Crime</title>
+
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+
+    <!-- HP container -->
+    <div class="hp"></div>
+
+    <!-- Sound on/off button -->
+    <img id="soundIcon" src="./images/ui/sound-on.png">
+
+    <!-- the dialog-box div is the styled black box around the text -->
+    <div class="dialog-box">
+        <h1>Mysterious Crime</h1>
+        <div id="description"></div>
+        <div id="characterImage"></div>
+        <div class="suspects"></div>
+        <div id="gameText"></div>
+
+        <!-- Input Form -->
+        <form id="inputForm">
+            <input type="text" id="playerName" required>
+            <input type="number" id="codeSafe">
+            <input type="text" id="passwordPC">
+            <button type="submit">Enter</button>
+        </form>;
+
+        <!-- Game Buttons (options) -->
+        <div id="gameButtons"></div>
+    </div>
+
+    <!-------- Inventory  -------->
+    <!-- Inventory UI Box -->
+    <div class="inventoryUI"></div>
+
+    <!-- For Inspection -->
+    <div class="inspectItemContainer">
+        <img class="inspectItem">
+    </div>
+
+    <!-- Inventory Icon -->
+    <img id="inventoryIcon" src="./images/ui/inventory_icon.png" alt="inventory icon">
+
+    <!-- JS scripts -->
+    <script src="./js/sound.js"></script>
+    <script src="./js/ui.js"></script>
+    <script src="./js/input.js"></script>
+    <script src="./js/fight.js"></script>
+    <script src="./js/inventory.js"></script>
+    <script src="./js/investigation.js"></script>
+    <script src="./js/item.js"></script>
+    <script src="./js/main.js"></script>
+</body>
+
+</html>

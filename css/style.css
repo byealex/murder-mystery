@@ -1,0 +1,201 @@
+body {
+    display: flex;
+    /* background-image: url('./images/scenes/crime_scene.png'); */
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+/* ----- HP ----- */
+
+.hp {
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.hp img {
+    width: 50px;
+    height: 50px;
+}
+
+/* ----- Sound Icon ----- */
+
+#soundIcon {
+    display: flex;
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 50px;
+    background-color: rgba(255, 255, 255, 0.39);
+}
+
+/* ---------- Dialogue Box ---------- */
+
+.dialog-box {
+    text-align: center;
+    width: 50rem;
+    background-color: black;
+    opacity: 90%;
+    padding: 20px;
+    border-radius: 12px;
+    justify-content: space-evenly;
+}
+
+/* ----- Description & talking Person ----- */
+
+#description,
+span {
+    font-weight: 600;
+    color: antiquewhite;
+    margin-bottom: 12px;
+}
+
+/* ----- Character Image ----- */
+
+img {
+    width: 100px;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+/* ----- Suspects ----- */
+
+.suspects {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 40px;
+}
+
+.suspects p {
+    margin: 0;
+    color: white;
+}
+
+/* ----- Game Text ----- */
+
+#gameText {
+    text-align: start;
+}
+
+/* -------- Input -------- */
+
+#inputForm {
+    padding-top: 24px;
+}
+
+input {
+    background-color: transparent;
+    color: antiquewhite;
+    border: 2px solid rgb(78, 78, 78);
+    border-radius: 4px;
+    padding: 4px;
+}
+
+/* ----- Buttons ----- */
+
+button {
+    background-color: rgba(99, 98, 98, 0.411);
+    color: antiquewhite;
+    border: none;
+    padding: 8px;
+    border-radius: 4px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+#gameButtons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 12px;
+}
+
+/* ----- Inventory UI (Black box like Dialogue Box) ----- */
+
+.inventoryUI {
+    display: none;
+    width: 50rem;
+    background-color: rgb(0, 0, 0);
+    opacity: 90%;
+    padding: 20px;
+    border-radius: 12px;
+    justify-content: space-evenly;
+}
+
+/* ----- Inventory Icon ----- */
+
+#inventoryIcon {
+    position: fixed;
+    display: none;
+    bottom: 0;
+    right: 8px;
+}
+
+/* ----- Items ----- */
+
+.itemContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 8px;
+    margin-bottom: 8px;
+    gap: 12px;
+    border: 2px solid rgb(78, 78, 78);
+    border-radius: 8px;
+}
+
+.itemContainer img {
+    display: flex;
+    width: 50px;
+    border-radius: 8px;
+    margin: 0;
+}
+
+.inspectItemContainer {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.inspectItem {
+    width: 28rem;
+}
+
+/* ----- General Styling (font color, etc) ----- */
+
+h1,
+.itemContainer,
+.inventoryUI,
+#gameText {
+    color: white;
+}
+
+
+
+/* This hides the arrows from input number. 
+This part was copied from w3school: https://www.w3schools.com/howto/howto_css_hide_arrow_number.asp */
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}

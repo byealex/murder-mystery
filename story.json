@@ -1,0 +1,664 @@
+{
+    "startScreen": {
+        "backgroundImage": "./images/scenes/cover_art.png",
+        "title": "Mysterious Crime",
+        "options": [
+            {
+                "name": "Start Game",
+                "action": "advanceTo(storyData.intro)"
+            }
+        ]
+    },
+    "intro": {
+        "backgroundImage": "./images/scenes/crime_scene.png",
+        "sound": "./sounds/background_music.mp3",
+        "text": "You pull up to a grand, ivy-covered mansion under the dim glow of a foggy evening sky. This is the home of Mr. Hamilton, the recently deceased businessman whose sudden death has left the community in shock. The house looms quietly, but something feels amiss—as if the old walls are holding onto a secret. As you step out of your car and approach the front door, the muffled voices of police officers and the faint flicker of blue lights add an eerie pulse to the scene. Just then, an officer approaches, his expression a mix of suspicion and curiosity.",
+        "options": [
+            {
+                "name": "Continue",
+                "action": "advanceTo(storyData.username)"
+            }
+        ]
+    },
+    "username": {
+        "image": "./images/characters/officer.png",
+        "text": "Excuse me! Who are you?"
+    },
+    "proceedIntro": {
+        "image": "./images/characters/officer.png",
+        "talkingPerson": "Officer",
+        "text": "Oh, so you are the famous detective <span class=\"player\">PLAYER</span>!</p><p>Welcome. We could really use your expertise on this case. Mr. Hamilton was found dead right here in his study, not long ago. It doesn’t look like an obvious crime scene, but there’s a safe in there that we believe holds a key to his last intentions. The family is counting on us to open it.",
+        "options": [
+            {
+                "name": "Walk into the house",
+                "action": " advanceTo(storyData.changeScene)"
+            }
+        ]
+    },
+    "changeScene": {
+        "backgroundImage": "./images/scenes/house.png",
+        "image": "./images/characters/officer.png",
+        "talkingPerson": "Officer",
+        "text": "I’ve gathered a few people who were closest to him, and they might have clues to help unlock the safe. But you’ll need to speak to them in order—start with those closest to him. Maybe you can make sense of this where the rest of us couldn’t.",
+        "options": [
+            {
+                "name": "Continue",
+                "action": "advanceTo(storyData.investigation)"
+            }
+        ]
+    },
+    "investigation": {
+        "backgroundImage": "./images/scenes/house.png",
+        "description": "Choose someone to talk to:",
+        "suspects": [
+            {
+                "id": "Wife",
+                "image": "./images/characters/wife.png",
+                "description": "Talk to Martha (Wife)",
+                "action": "talkToPerson('Wife')"
+            },
+            {
+                "id": "Neighbor",
+                "image": "./images/characters/neighbor.png",
+                "description": "Talk to George (Neighbor)",
+                "action": "talkToPerson('Neighbor')"
+            },
+            {
+                "id": "Assistant",
+                "image": "./images/characters/assistant.png",
+                "description": "Talk to Rachel (Assistant)",
+                "action": "talkToPerson('Assistant')"
+            },
+            {
+                "id": "Friend",
+                "image": "./images/characters/friend.png",
+                "description": "Talk to David (Friend)",
+                "action": "talkToPerson('Friend')"
+            },
+            {
+                "id": "Safe",
+                "image": "./images/characters/pin_lock.png",
+                "description": "Inspect Safe",
+                "action": "advanceTo(storyData.safe)"
+            }
+        ]
+    },
+    "dialogues": {
+        "Wife": {
+            "image": "./images/characters/wife.png",
+            "name": "Martha (Wife)",
+            "text": "You know, my husband had this odd habit. He always bought things in pairs—like shoes, towels, pens, you name it. It was just something he did. Maybe he was just particular about balance, but it’s definitely something he did all the time.",
+            "nextPhase": {
+                "text": "My husband’s affairs were always so secretive. I never knew what was going on in his study or what deals he was making. But now that I think of it, there was one time he mentioned something about V. Blackwood and a crucial document that could have caused him trouble. If you search his study, you might find it. Here are some keys, you might need them.",
+                "options": [
+                    {
+                        "name": "Accept the keys & search study",
+                        "action": "advanceTo(storyData.searchForDrawer)"
+                    }
+                ]
+            },
+            "finalPhase": {
+                "text": "My husband’s secrets weighed heavily on our marriage. I always felt like an outsider in his life—he never shared what he was doing, not with me or anyone else. It was frustrating, and I won’t lie—I often felt angry about it. But I’d never harm him! Still, I do wonder if his dangerous dealings with people like V. Blackwood might have finally caught up with him. If only he’d been more open, maybe I could’ve helped him avoid this.",
+                "options": [
+                    {
+                        "name": "Go back",
+                        "action": "advanceTo(storyData.finalInvestigation)"
+                    },
+                    {
+                        "name": "Arrest Martha (Wife)",
+                        "action": "advanceTo(storyData.arrestPerson['Wife'])"
+                    }
+                ]
+            }
+        },
+        "Neighbor": {
+            "image": "./images/characters/neighbor.png",
+            "name": "George (Neighbor)",
+            "text": "Hamilton was always the best-dressed man in town, you know? He always made sure he was dressed to the nines—perfectly put together. He always said that looking good was part of being confident. Maybe this doesn’t help much, but I always thought it was interesting how much he cared about looking perfect.",
+            "nextPhase": {
+                "text": "I don't want to get involved, but I saw Rachel (Assistant) sneaking around Hamilton's study the night he died. She looked nervous. I didn't think much of it at the time, but now... I'm sure she's hiding something. Also Martha (Wife) was always so paranoid about her husband's business deals. I wouldn't be surprised if she snapped.",
+                "options": [
+                    {
+                        "name": "Press him for details",
+                        "action": " advanceTo(storyData.pressGeorge)"
+                    },
+                    {
+                        "name": "Question his motives",
+                        "action": " advanceTo(storyData.questionGeorge)"
+                    },
+                    {
+                        "name": "Thank him and leave",
+                        "action": " advanceTo(storyData.investigationContinues)"
+                    }
+                ]
+            },
+            "finalPhase": {
+                "text": "I know how this looks. I owed Hamilton money—fine. But killing him wouldn’t erase my debts; it would only make them worse. Do you really think I’d risk that? I saw Rachel sneaking into his study that night. She always seemed... protective of him, almost obsessive. Then there’s his wife—always paranoid about his business. Maybe she just couldn’t handle the pressure. I’m telling you, someone else had a stronger reason than me to want him dead.",
+                "options": [
+                    {
+                        "name": "Go back",
+                        "action": "advanceTo(storyData.finalInvestigation)"
+                    },
+                    {
+                        "name": "Arrest George (Neighbor)",
+                        "action": "advanceTo(storyData.arrestPerson['Neighbor'])"
+                    }
+                ]
+            }
+        },
+        "Assistant": {
+            "image": "./images/characters/assistant.png",
+            "name": "Rachel (Assistant)",
+            "text": "He loved collecting books. He especially liked the book ‘8 Ways to Spiritual Freedom.’ He told me once that it was the fifth book he bought in a series. I remember he was always talking about how it changed his perspective on life.",
+            "nextPhase": {
+                "text": "I didn't think you'd come for me. But, if you want the truth, here it is. Hamilton wasn't just a businessman—he was involved with some dangerous people. I thought he was trying to get out, but maybe he didn't succeed. He was scared of V. Blackwood. Also, David (Friend) seems awfully quiet about this. The thing is, he doesn't even live in this area and now that he 'visited' Hamilton after many months have passed since his last visit, Hamilton got murdered. A bit supsicious, don't you think?",
+                "options": [
+                    {
+                        "name": "Return to other suspects",
+                        "action": " advanceTo(storyData.investigationContinues)"
+                    }
+                ]
+            },
+            "finalPhase": {
+                "text": "You don’t get it. Blackwood wasn’t just some annoying presence in Hamilton’s life—he was a monster. Years ago, my father trusted Blackwood, and it destroyed us. My family was never the same after he bled us dry. When Blackwood came to me, I tried to reason with Hamilton. I warned him that Blackwood wasn’t someone you crossed lightly. But Hamilton… he didn’t listen. He thought he was untouchable, that he could handle anything. Blackwood doesn’t just go away, not without getting what he wants. He made it very clear that someone would pay the price if Hamilton didn’t fall in line. I couldn’t let that happen. Not again. Not to my family.",
+                "options": [
+                    {
+                        "name": "Go back",
+                        "action": "advanceTo(storyData.finalInvestigation)"
+                    },
+                    {
+                        "name": "Arrest Rachel (Assistant)",
+                        "action": "advanceTo(storyData.arrestPerson['Assistant'])"
+                    }
+                ]
+            }
+        },
+        "Friend": {
+            "image": "./images/characters/friend.png",
+            "name": "David (Friend)",
+            "text": "Hamilton was always punctual. Every morning around 9:00 AM, he’d knock on my door. And he always knocked exactly 3 times. I don’t know why he did it, but it was a habit I noticed.",
+            "nextPhase": {
+                "text": "The last time I spoke to Hamilton he told me that V.Blackwood is a nasty guy, whoever that may be. But I also remember that he would press charges against his neighbor, if he doesn't pay him back as a lot of time has passed since he lent him the money. Yeah it is true that they were business partners once, but went terribly wrong.",
+                "options": [
+                    {
+                        "name": "Thank him and leave",
+                        "action": " advanceTo(storyData.investigationContinues)"
+                    }
+                ]
+            },
+            "finalPhase": {
+                "text": "Look, Hamilton and I were friends, but I didn’t know everything about his life. It’s true, I hadn’t visited in a while, but that’s no crime! He called me recently, said he needed advice about this ‘exposing V. Blackwood’ thing. I told him to drop it—it sounded dangerous. Honestly, I think George (Neighbor) had the most to lose if Hamilton went public. But maybe it wasn’t just money that got someone to kill him...",
+                "options": [
+                    {
+                        "name": "Go back",
+                        "action": "advanceTo(storyData.finalInvestigation)"
+                    },
+                    {
+                        "name": "Arrest David (Friend)",
+                        "action": "advanceTo(storyData.arrestPerson['Friend'])"
+                    }
+                ]
+            }
+        },
+        "options": [
+            {
+                "name": "Go back",
+                "action": "advanceTo(storyData.investigation)"
+            }
+        ]
+    },
+    "safe": {
+        "backgroundImage": "./images/scenes/safe.png",
+        "type": "number",
+        "text": "Enter a 4-digit code:",
+        "errorMessage": "Wrong code!",
+        "options": [
+            {
+                "name": "Go back",
+                "action": "advanceTo(storyData.investigation)"
+            }
+        ]
+    },
+    "openedSafe": {
+        "backgroundImage": "./images/scenes/open_safe.png",
+        "text": "The safe clicks open, unveiling a pocket watch as well as a letter penned by Mr. Hamilton. Within its lines lies the blueprint of an exposé that could have been worth millions. It appears he was on the verge of exposing someone when his life was tragically cut short. The letter mentions a name—someone who may be intricately tied to his demise. The plot thickens, leaving you questioning: did someone discover his secret plans? And if so, did they kill to ensure they remained hidden?",
+        "options": [
+            {
+                "name": "Read the letter",
+                "action": "advanceTo(storyData.letter)"
+            }
+        ]
+    },
+    "letter": {
+        "text": "To the one who dares seek the truth,<br><br>The shadows in this city run deep, and I have spent years untangling their threads. The evidence I have gathered exposes a figure whose influence corrupts every corner of our society. But this truth is dangerous; it threatens not just their empire but my life as well.<br><br>If you are reading this, I may no longer be alive. Remember this name: Victor Blackwood. He is the lynchpin of it all. If you bring him to justice, you will not only avenge me but save countless others from his grasp.<br><br>Sincerely,<br>Mr.Hamilton",
+        "options": [
+            {
+                "name": "Take the Pocket Watch",
+                "action": "advanceTo(storyData.takeWatch)"
+            }
+        ]
+    },
+    "takeWatch": {
+        "text": "You took the pocket watch. It was added to your inventory.",
+        "item": {
+            "image": "./images/items/item_pocket_watch.png",
+            "inspect": "./images/items/item_pocket_watch_detail.png",
+            "name": "Pocket watch",
+            "description": "Engraved with the some numbers.",
+            "options": [
+                {
+                    "name": "View",
+                    "action": "inspectItem(storyData.takeWatch.item.inspect)"
+                }
+            ]
+        },
+        "options": [
+            {
+                "name": "Confront suspects again",
+                "action": "advanceTo(storyData.neighborRushesOver)"
+            }
+        ]
+    },
+    "neighborRushesOver": {
+        "image": "./images/characters/neighbor.png",
+        "talkingPerson": "George (Neighbor)",
+        "text": "Detective! Wait! I've just remembered something important. This could change everything, but you'll need to act fast.",
+        "options": [
+            {
+                "name": "Listen to George's story",
+                "action": " advanceTo(storyData.georgeStory)"
+            },
+            {
+                "name": "Ignore him and investigate elsewhere",
+                "action": " advanceTo(storyData.investigationContinues)"
+            }
+        ]
+    },
+    "georgeStory": {
+        "image": "./images/characters/neighbor.png",
+        "talkingPerson": "George (Neighbor)",
+        "text": "I don't want to get involved, but I saw Rachel (Assistant) sneaking around Hamilton's study the night he died. She looked nervous. I didn't think much of it at the time, but now... I'm sure she's hiding something. Also Martha (Wife) was always so paranoid about her husband's business deals. I wouldn't be surprised if she snapped.",
+        "options": [
+            {
+                "name": "Press him for details",
+                "action": " advanceTo(storyData.pressGeorge)"
+            },
+            {
+                "name": "Question his motives",
+                "action": " advanceTo(storyData.questionGeorge)"
+            },
+            {
+                "name": "Thank him and leave",
+                "action": " advanceTo(storyData.investigationContinues)"
+            }
+        ]
+    },
+    "questionGeorge": {
+        "image": "./images/characters/neighbor.png",
+        "talkingPerson": "George (Neighbor)",
+        "text": "What? You think I had something to do with this? Look, I don't want any trouble. I'm just tyring to help.",
+        "options": [
+            {
+                "name": "Press him for details",
+                "action": " advanceTo(storyData.pressGeorge)"
+            },
+            {
+                "name": "Drop the subject",
+                "action": " advanceTo(storyData.investigationContinues)"
+            }
+        ]
+    },
+    "pressGeorge": {
+        "image": "./images/characters/neighbor.png",
+        "talkingPerson": "George (Neighbor)",
+        "text": "Fine. You’re right—I haven’t told you everything. Hamilton and I were… business partners once. But it went sour. I owed him a lot of money. That’s all I know. I swear!",
+        "options": [
+            {
+                "name": "Drop the subject",
+                "action": " advanceTo(storyData.investigationContinues)"
+            }
+        ]
+    },
+    "investigationContinues": {
+        "backgroundImage": "./images/scenes/house.png",
+        "description": "You decided to focus on other leads for now.",
+        "suspects": [
+            {
+                "id": "Neighbor",
+                "image": "./images/characters/neighbor.png",
+                "description": "Investigate George (Neighbor)",
+                "action": "talkToPerson('Neighbor')"
+            },
+            {
+                "id": "Assistant",
+                "image": "./images/characters/assistant.png",
+                "description": "Investigate Rachel (Assistant)",
+                "action": "talkToPerson('Assistant')"
+            },
+            {
+                "id": "Friend",
+                "image": "./images/characters/friend.png",
+                "description": "Investigate David (Friend)",
+                "action": "talkToPerson('Friend')"
+            },
+            {
+                "id": "Wife",
+                "image": "./images/characters/wife.png",
+                "description": "Investigate Martha (Wife)",
+                "action": "talkToPerson('Wife')"
+            }
+        ]
+    },
+    "searchForDrawer": {
+        "backgroundImage": "./images/scenes/study.png",
+        "description": "You put the keys into your inventory",
+        "text": "While exploring Hamilton's study, searching through papers and testing the keys on potential locks, you discover a drawer secured with a lock. It seems like the perfect opportunity to try out the keys in your inventory.",
+        "item": {
+            "image": "./images/items/item_keys.png",
+            "inspect": "./images/items/item_keys.png",
+            "name": "Keys",
+            "description": "Can be used to unlock something.",
+            "options": [
+                {
+                    "name": "View",
+                    "action": "inspectItem(storyData.searchForDrawer.item.inspect)"
+                },
+                {
+                    "name": "Use",
+                    "action": "useItem('Keys')"
+                }
+            ]
+        },
+        "nextScenario": "drawerOpened",
+        "options": [
+            {
+                "name": "Go back",
+                "action": "advanceTo(storyData.investigationContinues)"
+            }
+        ]
+    },
+    "drawerOpened": {
+        "backgroundImage": "./images/scenes/drawer.png",
+        "description": "You put the document into your inventory.",
+        "text": "You opened the drawer. Inside the drawer, you uncover a document. Its contents are cryptic, appearing to conceal a password for something.",
+        "item": {
+            "image": "./images/items/item_document.png",
+            "inspect": "./images/items/item_document.png",
+            "name": "Document",
+            "description": "Contains cryptic information.",
+            "text": "Dear whoever is trying to uncover the truth,<br><br>1. A particular pocket watch is my most trusted companion. The year it was crafted is a constant reminder of where it all began.<br><br>2. The word you seek is what this device gives us the ability to measure, yet we can never hold onto it—something that defines all our lives.<br><br>Add these together, and you shall have the information you seek.<br><br>Hint: The order matters. What the device measures always comes before when it began.<br><br>Yours,<br>H.",
+            "options": [
+                {
+                    "name": "View",
+                    "action": "inspectItem(storyData.drawerOpened.item.inspect)"
+                },
+                {
+                    "name": "Read",
+                    "action": "readItem(storyData.drawerOpened.item.text)"
+                }
+            ]
+        },
+        "options": [
+            {
+                "name": "Return to suspects",
+                "action": " advanceTo(storyData.investigationContinues)"
+            },
+            {
+                "name": "Go to Hamilton's PC",
+                "action": "advanceTo(storyData.goToPC)"
+            }
+        ]
+    },
+    "goToPC": {
+        "backgroundImage": "./images/scenes/computer.png",
+        "type": "text",
+        "text": "Enter a password:",
+        "errorMessage": "Wrong password!",
+        "options": [
+            {
+                "name": "Go back",
+                "action": "advanceTo(storyData.drawerOpened)"
+            }
+        ]
+    },
+    "informationAboutBlackwood": {
+        "text": "You logged into the PC and went through some files on Hamilton's PC. You discovered a file that contains information about how Hamilton was going to expose V.Blackwood. Was someone hired by V.Blackwood to kill Hamilton? You know V.Blackwood is invovled in this, but he isn't the actual killer. What motive would the killer have? Maybe money? Maybe safety? Time to question the suspects one last time.",
+        "options": [
+            {
+                "name": "Return to suspects",
+                "action": "advanceTo(storyData.finalInvestigation)"
+            }
+        ]
+    },
+    "finalInvestigation": {
+        "backgroundImage": "./images/scenes/house.png",
+        "description": "You decided to talk to the suspects one last time.",
+        "suspects": [
+            {
+                "id": "Wife",
+                "image": "./images/characters/wife.png",
+                "description": "Interrogate Martha (Wife)",
+                "action": "talkToPerson('Wife')"
+            },
+            {
+                "id": "Friend",
+                "image": "./images/characters/friend.png",
+                "description": "Interrogate David (Friend)",
+                "action": "talkToPerson('Friend')"
+            },
+            {
+                "id": "Assistant",
+                "image": "./images/characters/assistant.png",
+                "description": "Interrogate Rachel (Assistant)",
+                "action": "talkToPerson('Assistant')"
+            },
+            {
+                "id": "Neighbor",
+                "image": "./images/characters/neighbor.png",
+                "description": "Interrogate George (Neighbor)",
+                "action": "talkToPerson('Neighbor')"
+            }
+        ]
+    },
+    "arrestPerson": {
+        "Wife": {
+            "image": "./images/characters/wife.png",
+            "talkingPerson": "Martha (Wife)",
+            "text": "You decided to arrest me? Are you serious?! Detective, with all due to respect, you need to retire. This is ridiculous!",
+            "options": [
+                {
+                    "name": "End Game",
+                    "action": "advanceTo(storyData.falseArrest)"
+                }
+            ]
+        },
+        "Neighbor": {
+            "image": "./images/characters/neighbor.png",
+            "talkingPerson": "George (Neighbor)",
+            "text": "Arrest me? For what? I didn’t do anything! You’ve got the wrong guy, detective. I was just trying to get by. You really think I’d kill Hamilton over a few debts?",
+            "options": [
+                {
+                    "name": "End Game",
+                    "action": "advanceTo(storyData.falseArrest)"
+                }
+            ]
+        },
+        "Assistant": {
+            "sound": "./sounds/boss_fight.mp3",
+            "text": "You reach for your cuffs, but Rachel suddenly steps back, her breath sharp and shaky.\"I’m not going to prison for this,\" she hisses. Her hand flies into her coat—BANG! A shot rings out, shattering the glass cabinet behind you. You barely manage to dive behind a desk for cover. <br><br>- You have 3 HP <br>- Decisions are based on chance <br> - Failed attempt costs you 1 HP <br> - Each attempt has a different text <br> - You can use items from your inventory",
+            "options": [
+                {
+                    "name": "Next",
+                    "action": "advanceTo(storyData.fight)"
+                }
+            ]
+        },
+        "Friend": {
+            "image": "./images/characters/friend.png",
+            "talkingPerson": "David (Friend)",
+            "text": "Wait, what? You’re arresting me? You think I’d kill Hamilton? We were friends! I don’t even know what’s going on here. This is a mistake, detective.",
+            "options": [
+                {
+                    "name": "End Game",
+                    "action": "advanceTo(storyData.falseArrest)"
+                }
+            ]
+        }
+    },
+    "falseArrest": {
+        "sound": "./sounds/failed_arrest.mp3",
+        "description": "Game Over",
+        "text": "You arrested the wrong person. The real killer escaped...",
+        "options": [
+            {
+                "name": "Restart the game",
+                "action": "reset(storyData.startScreen)"
+            }
+        ]
+    },
+    "successfulArrest": {
+        "sound": "./sounds/success.mp3",
+        "description": "You Win!",
+        "text": "You arrested the true Killer. However, keep an eye on V.Blackwood...",
+        "options": [
+            {
+                "name": "Restart the game",
+                "action": "reset(storyData.startScreen)"
+            }
+        ]
+    },
+    "fight": {
+        "text": "Your Next Move:",
+        "options": [
+            {
+                "name": "Try to talk Rachel down",
+                "action": "talkRachelDown()"
+            },
+            {
+                "name": "Dodge and reposition",
+                "action": "dodgeAndReposition()"
+            },
+            {
+                "name": "Use an item from your inventory",
+                "action": "updatedInventory()"
+            }
+        ]
+    },
+    "talkAttempt": {
+        "one": {
+            "image": "./images/characters/assistant.png",
+            "talkingPerson": "Rachel (Assistant)",
+            "text": "Rachel’s hands tremble, but she tightens her grip on the gun. \"You don’t understand! I had no choice!\" she shouts, her voice breaking.  <br><br>Suddenly, she raises the gun and fires! The shot grazes your arm, sending a sharp jolt of pain through you.",
+            "options": [
+                {
+                    "name": "Next",
+                    "action": "loseHP()"
+                }
+            ]
+        },
+        "two": {
+            "image": "./images/characters/assistant.png",
+            "talkingPerson": "Rachel (Assistant)",
+            "text": "Tears stream down Rachel’s face. \"He deserved it! You have no idea what he put me through!\" She steadies the gun, her hands shaking.  <br><br>Before you can react, she lunges at you, slamming the butt of the gun against your ribs. A sharp pain shoots through your side as you stumble back.",
+            "options": [
+                {
+                    "name": "Next",
+                    "action": "loseHP()"
+                }
+            ]
+        },
+        "three": {
+            "image": "./images/characters/assistant.png",
+            "talkingPerson": "Rachel (Assistant)",
+            "text": "Rachel’s breathing is ragged, her whole body trembling. \"I... I just wanted it to stop...\" she mutters.  <br><br>She raises the gun once more, but this time, her hands shake too much to aim. With a defeated sigh, she lets the weapon slip from her grasp and collapses to her knees.",
+            "options": [
+                {
+                    "name": "Next",
+                    "action": "advanceTo(storyData.successfulArrest)"
+                }
+            ]
+        }
+    },
+    "dodgeAttempt": {
+        "one": {
+            "text": "Rachel pulls the trigger—BANG! A searing pain shoots through your side as the bullet grazes you.",
+            "options": [
+                {
+                    "name": "Next",
+                    "action": "loseHP()"
+                }
+            ]
+        },
+        "two": {
+            "text": "Rachel fires again! The bullet narrowly misses your chest, ripping through your coat. You feel the heat of the shot as you dive for cover.",
+            "options": [
+                {
+                    "name": "Next",
+                    "action": "loseHP()"
+                }
+            ]
+        },
+        "three": {
+            "text": "You successfully dodge and get close enough to disarm Rachel! You knock the gun away and cuff her.",
+            "options": [
+                {
+                    "name": "Next",
+                    "action": "advanceTo(storyData.successfulArrest)"
+                }
+            ]
+        }
+    },
+    "useInventoryItem": {
+        "gun": {
+            "text": "You draw your pistol, aiming steadily at Rachel. She hesitates, realizing she's outmatched.",
+            "options": [
+                {
+                    "name": "Next",
+                    "action": "advanceTo(storyData.successfulArrest)"
+                }
+            ]
+        },
+        "keys": {
+            "text": "You throw your keys at Rachel. They bounce off her shoulder. She blinks, utterly baffled.",
+            "options": [
+                {
+                    "name": "Next",
+                    "action": "loseHP()"
+                }
+            ]
+        },
+        "document": {
+            "text": "You throw the document at Rachel. It flutters pathetically in the air. She looks at you, confused.",
+            "options": [
+                {
+                    "name": "Next",
+                    "action": "loseHP()"
+                }
+            ]
+        },
+        "pocketWatch": {
+            "text": "You toss the pocket watch at Rachel like a time-traveling ninja. It clinks harmlessly to the floor. She stares at it, then at you, as if questioning your life choices.",
+            "options": [
+                {
+                    "name": "Next",
+                    "action": "loseHP()"
+                }
+            ]
+        }
+    },
+    "death": {
+        "sound": "./sounds/death_music.mp3",
+        "description": "Game Over - Killer Escapes.",
+        "text": "Rachel fires a final shot. Your vision fades to black...",
+        "options": [
+            {
+                "name": "Try again",
+                "action": "reset(storyData.arrestPerson['Assistant'])"
+            },
+            {
+                "name": "Restart the game",
+                "action": "reset(storyData.startScreen)"
+            }
+        ]
+    }
+}
